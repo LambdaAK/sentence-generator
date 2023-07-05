@@ -4,8 +4,10 @@ from dataclasses import dataclass
 from tree import *
 from generate import *
 
-phrases = list((generate_noun_phrase() for _ in range(100)))
 
-for phrase in phrases:
-    print(phrase)
+l = list((generate_noun_phrase() for _ in range(10)))
+
+for i in l:
+    print(i)
+
 

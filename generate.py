@@ -12,7 +12,6 @@ with open('./nouns.json', 'r') as f:
 with open('./adjectives.json', 'r') as f:
     adjectives = json.load(f)
 
-
 def generate_noun() -> Noun:
     # pick a random noun
     noun = random.choice(nouns)
@@ -24,11 +23,18 @@ def generate_adjective() -> Adjective:
     adjective = random.choice(adjectives)
     return Adjective(adjective)
 
-
 def generate_noun_phrase() -> NounPhrase:
     # decide whether to make it a noun phrase with an adjective or not
-    if random.choice([True, False]):
-        return NounPhraseWithAdjective(generate_adjective(), generate_noun())
-    else:
-        return NounPhraseWithoutAdjective(generate_noun())
 
+    adjective_level = None
+
+    if random.choice([True, False]):
+        adjective_level = NounPhraseWithAdjective(generate_adjective(), generate_noun())
+    else:
+        adjective_level = NounPhraseWithoutAdjective(generate_noun())
+
+    # decide whether to make it a noun phrase with an article or not
+    if random.choice([True, False]):
+        return NounPhraseWithArticle(random.choice([Article.DEFINITE, Article.INDEFINITE]), adjective_level)
+    else:
+        return NounPhraseWithoutArticle(adjective_level)
