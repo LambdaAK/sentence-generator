@@ -76,10 +76,12 @@ class StandardVerb(Verb):
 
     def to_string(self, plurality: Plurality) -> str:
         super().__init__()
-        match self.tense:
-            case Tense.INFINITIVE:
+        match self.tense, plurality:
+            case Tense.INFINITIVE, Plurality.SINGULAR:
+                return self.verbs_dict[self.word]["third person singular"]
+            case Tense.INFINITIVE, Plurality.PLURAL:
                 return self.word
-            case Tense.PAST_TENSE:
+            case Tense.PAST_TENSE, _:
                 return self.verbs_dict[self.word]["past"]
             case _:
                 raise NotImplementedError("This tense is not implemented yet")
@@ -139,15 +141,27 @@ class NounPhraseWithoutArticle(NounPhrase):
     adjectives: list[Adjective]
 
     def __repr__(self) -> str:
-        adjectives_string: str = ', '.join(
-            list(
-                map(
-                    lambda x: x.word,
-                    self.adjectives
+        adjectives_string: str = ""
+
+        match self.adjectives:
+            case []:
+                adjectives_string = ""
+            case _:
+                adjectives_string: str = ', '.join(
+                    list(
+                        map(
+                            lambda x: x.word,
+                            self.adjectives
+                        )
+                    )
                 )
-            )
-        )
-        return f'{adjectives_string} {self.noun}'
+        
+
+        match adjectives_string:
+            case "":
+                return f'{self.noun}'
+            case _:
+                return f'{adjectives_string} {self.noun}'
     
 @dataclass
 class NounPhraseWithArticle(NounPhrase):
@@ -188,7 +202,11 @@ class NounPhraseWithArticle(NounPhrase):
             )
         )            
 
-        return f'{article_string} {adjectives_string} {self.noun}'
+        match adjectives_string:
+            case "":
+                return f'{article_string} {self.noun}'
+            case _:
+                return f'{article_string} {adjectives_string} {self.noun}'
     
 @dataclass
 class Sentence():
@@ -196,4 +214,6 @@ class Sentence():
     verb: Verb
 
     def __repr__(self) -> str:
-        return f'{self.noun_phrase} {self.verb.to_string(self.noun_phrase.noun.plurality)}'
+        s = f'{self.noun_phrase} {self.verb.to_string(self.noun_phrase.noun.plurality)}'
+        # make the first letter uppercase
+        return s[0].upper() + s[1:] + "."

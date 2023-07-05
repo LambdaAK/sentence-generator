@@ -12,5 +12,5 @@ for i in l:
 '''
 
 for i in range(100):
-    print(generate_sentence())
-
+    s = generate_sentence()
+    print(s)

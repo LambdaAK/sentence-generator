@@ -14,5 +14,231 @@
     "mouse": {
         "singular": "mouse",
         "plural": "mice"
+    },
+    "bird": {
+        "singular": "bird",
+        "plural": "birds"
+    },
+    "elephant": {
+        "singular": "elephant",
+        "plural": "elephants"
+    },
+    "lion": {
+        "singular": "lion",
+        "plural": "lions"
+    },
+    "tiger": {
+        "singular": "tiger",
+        "plural": "tigers"
+    },
+    "monkey": {
+        "singular": "monkey",
+        "plural": "monkeys"
+    },
+    "snake": {
+        "singular": "snake",
+        "plural": "snakes"
+    },
+    "horse": {
+        "singular": "horse",
+        "plural": "horses"
+    },
+    "cow": {
+        "singular": "cow",
+        "plural": "cows"
+    },
+    "sheep": {
+        "singular": "sheep",
+        "plural": "sheep"
+    },
+    "goose": {
+        "singular": "goose",
+        "plural": "geese"
+    },
+    "duck": {
+        "singular": "duck",
+        "plural": "ducks"
+    },
+    "chicken": {
+        "singular": "chicken",
+        "plural": "chickens"
+    },
+    "bear": {
+        "singular": "bear",
+        "plural": "bears"
+    },
+    "wolf": {
+        "singular": "wolf",
+        "plural": "wolves"
+    },
+    "fox": {
+        "singular": "fox",
+        "plural": "foxes"
+    },
+    "deer": {
+        "singular": "deer",
+        "plural": "deer"
+    },
+    "rabbit": {
+        "singular": "rabbit",
+        "plural": "rabbits"
+    },
+    "frog": {
+        "singular": "frog",
+        "plural": "frogs"
+    },
+    "spider": {
+        "singular": "spider",
+        "plural": "spiders"
+    },
+    "ant": {
+        "singular": "ant",
+        "plural": "ants"
+    },
+    "bee": {
+        "singular": "bee",
+        "plural": "bees"
+    },
+    "butterfly": {
+        "singular": "butterfly",
+        "plural": "butterflies"
+    },
+    "dolphin": {
+        "singular": "dolphin",
+        "plural": "dolphins"
+    },
+    "shark": {
+        "singular": "shark",
+        "plural": "sharks"
+    },
+    "whale": {
+        "singular": "whale",
+        "plural": "whales"
+    },
+    "seal": {
+        "singular": "seal",
+        "plural": "seals"
+    },
+    "penguin": {
+        "singular": "penguin",
+        "plural": "penguins"
+    },
+    "turtle": {
+        "singular": "turtle",
+        "plural": "turtles"
+    },
+
+    "chair": {
+        "singular": "chair",
+        "plural": "chairs"
+    },
+    "table": {
+        "singular": "table",
+        "plural": "tables"
+    },
+    "book": {
+        "singular": "book",
+        "plural": "books"
+    },
+    "pen": {
+        "singular": "pen",
+        "plural": "pens"
+    },
+    "lamp": {
+        "singular": "lamp",
+        "plural": "lamps"
+    },
+    "phone": {
+        "singular": "phone",
+        "plural": "phones"
+    },
+    "car": {
+        "singular": "car",
+        "plural": "cars"
+    },
+    "bicycle": {
+        "singular": "bicycle",
+        "plural": "bicycles"
+    },
+    "guitar": {
+        "singular": "guitar",
+        "plural": "guitars"
+    },
+    "keyboard": {
+        "singular": "keyboard",
+        "plural": "keyboards"
+    },
+    "television": {
+        "singular": "television",
+        "plural": "televisions"
+    },
+    "clock": {
+        "singular": "clock",
+        "plural": "clocks"
+    },
+    "door": {
+        "singular": "door",
+        "plural": "doors"
+    },
+    "window": {
+        "singular": "window",
+        "plural": "windows"
+    },
+    "mirror": {
+        "singular": "mirror",
+        "plural": "mirrors"
+    },
+    "cup": {
+        "singular": "cup",
+        "plural": "cups"
+    },
+    "plate": {
+        "singular": "plate",
+        "plural": "plates"
+    },
+    "bottle": {
+        "singular": "bottle",
+        "plural": "bottles"
+    },
+    "umbrella": {
+        "singular": "umbrella",
+        "plural": "umbrellas"
+    },
+    "camera": {
+        "singular": "camera",
+        "plural": "cameras"
+    },
+    "hat": {
+        "singular": "hat",
+        "plural": "hats"
+    },
+    "shoe": {
+        "singular": "shoe",
+        "plural": "shoes"
+    },
+    "key": {
+        "singular": "key",
+        "plural": "keys"
+    },
+    "wallet": {
+        "singular": "wallet",
+        "plural": "wallets"
+    },
+    "ball": {
+        "singular": "ball",
+        "plural": "balls"
+    },
+    "glasses": {
+        "singular": "glasses",
+        "plural": "glasses"
+    },
+    "headphone": {
+        "singular": "headphone",
+        "plural": "headphones"
+    },
+    "sock": {
+        "singular": "sock",
+        "plural": "socks"
     }
+
 }
