@@ -4,8 +4,13 @@ from dataclasses import dataclass
 from tree import *
 from generate import *
 
-
+'''
 l = list((generate_noun_phrase() for _ in range(100)))
 
 for i in l:
     print(i)
+'''
+
+for i in range(100):
+    print(generate_sentence())
+

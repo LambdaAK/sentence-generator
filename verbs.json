@@ -1,0 +1,30 @@
+{
+    "pet": {
+        "infinitive": "pet",
+        "past": "petted",
+        "past participle": "petted",
+        "present participle": "petting",
+        "third person singular": "pets"
+    },
+    "see": {
+        "infinitive": "see",
+        "past": "saw",
+        "past participle": "seen",
+        "present participle": "seeing",
+        "third person singular": "sees"
+    },
+    "avoid": {
+        "infinitive": "avoid",
+        "past": "avoided",
+        "past participle": "avoided",
+        "present participle": "avoiding",
+        "third person singular": "avoids"
+    },
+    "touch": {
+        "infinitive": "touch",
+        "past": "touched",
+        "past participle": "touched",
+        "present participle": "touching",
+        "third person singular": "touches"
+    }
+}
