@@ -26,5 +26,76 @@
         "past participle": "touched",
         "present participle": "touching",
         "third person singular": "touches"
+    },
+    "run": {
+        "infinitive": "run",
+        "past": "ran",
+        "past participle": "run",
+        "present participle": "running",
+        "third person singular": "runs"
+    },
+    "eat": {
+        "infinitive": "eat",
+        "past": "ate",
+        "past participle": "eaten",
+        "present participle": "eating",
+        "third person singular": "eats"
+    },
+    "drink": {
+        "infinitive": "drink",
+        "past": "drank",
+        "past participle": "drunk",
+        "present participle": "drinking",
+        "third person singular": "drinks"
+    },
+    "sleep": {
+        "infinitive": "sleep",
+        "past": "slept",
+        "past participle": "slept",
+        "present participle": "sleeping",
+        "third person singular": "sleeps"
+    },
+    "write": {
+        "infinitive": "write",
+        "past": "wrote",
+        "past participle": "written",
+        "present participle": "writing",
+        "third person singular": "writes"
+    },
+    "sing": {
+        "infinitive": "sing",
+        "past": "sang",
+        "past participle": "sung",
+        "present participle": "singing",
+        "third person singular": "sings"
+    },
+    "dance": {
+        "infinitive": "dance",
+        "past": "danced",
+        "past participle": "danced",
+        "present participle": "dancing",
+        "third person singular": "dances"
+    },
+    "play": {
+        "infinitive": "play",
+        "past": "played",
+        "past participle": "played",
+        "present participle": "playing",
+        "third person singular": "plays"
+    },
+    "study": {
+        "infinitive": "study",
+        "past": "studied",
+        "past participle": "studied",
+        "present participle": "studying",
+        "third person singular": "studies"
+    },
+    "work": {
+        "infinitive": "work",
+        "past": "worked",
+        "past participle": "worked",
+        "present participle": "working",
+        "third person singular": "works"
     }
 }
+       

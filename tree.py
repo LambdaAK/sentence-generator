@@ -9,17 +9,20 @@ class Base:
     nouns_dict: dict[str, dict[str, str]] = {}
     adjectives: list[str] = []
     verbs_dict: dict[str, dict[str, str]] = {}
+    subordinating_conjunctions: list[str] = []
 
     def __init__(self):
         with open('./nouns.json', 'r') as f:
             self.nouns_dict = json.load(f)
 
-        # read the adjectives
         with open('./adjectives.json', 'r') as f:
             self.adjectives = json.load(f)
 
         with open('./verbs.json', 'r') as f:
             self.verbs_dict = json.load(f)
+        
+        with open('./subordinating_conjunctions.json', 'r') as f:
+            self.subordinating_conjunctions = json.load(f)
 
 
 
@@ -53,6 +56,8 @@ class Noun(Base):
                 return self.word
             case Plurality.PLURAL:
                 return self.nouns_dict[self.word]["plural"]
+
+
         
 
 @dataclass
@@ -67,6 +72,16 @@ class Adjective:
 class Verb(Base):
     def __init__(self):
         super().__init__()
+
+
+
+@dataclass
+class SubordinatingConjunction(Base):
+    word: str
+
+    def __repr__(self) -> str:
+        return self.word
+  
 
 
 @dataclass
@@ -162,6 +177,7 @@ class NounPhraseWithoutArticle(NounPhrase):
                 return f'{self.noun}'
             case _:
                 return f'{adjectives_string} {self.noun}'
+                
     
 @dataclass
 class NounPhraseWithArticle(NounPhrase):
@@ -209,11 +225,50 @@ class NounPhraseWithArticle(NounPhrase):
                 return f'{article_string} {adjectives_string} {self.noun}'
     
 @dataclass
-class Sentence():
+class IndependentClause:
     noun_phrase: NounPhrase
     verb: Verb
+    noun_phrase_two: NounPhrase
 
     def __repr__(self) -> str:
-        s = f'{self.noun_phrase} {self.verb.to_string(self.noun_phrase.noun.plurality)}'
-        # make the first letter uppercase
-        return s[0].upper() + s[1:] + "."
+        match self.noun_phrase_two:
+            case None:
+                return f'{self.noun_phrase} {self.verb.to_string(self.noun_phrase.noun.plurality)}'
+            case _:
+                return f'{self.noun_phrase} {self.verb.to_string(self.noun_phrase.noun.plurality)} {self.noun_phrase_two}'
+
+
+@dataclass
+class DependentClause:
+    subordinating_conjunction: SubordinatingConjunction
+    independent_clause: IndependentClause
+
+    def __repr__(self) -> str:
+        return f'{self.subordinating_conjunction} {self.independent_clause}'
+    
+
+class Sentence(Base):
+    def __init__(self):
+        super().__init__()
+    
+    def __repr__(self) -> str:
+        raise NotImplementedError("This method is not implemented yet")
+
+
+@dataclass
+class SentenceOne(Sentence):
+    independent_clause: IndependentClause
+
+    def __repr__(self) -> str:
+        s = self.independent_clause.__repr__()
+        return s[0].upper() + s[1:] + '.'
+    
+
+@dataclass
+class SentenceTwo(Sentence):
+    independent_clause: IndependentClause
+    dependent_clause: DependentClause
+
+    def __repr__(self) -> str:
+        s = f'{self.independent_clause}, {self.dependent_clause}'
+        return s[0].upper() + s[1:] + '.'

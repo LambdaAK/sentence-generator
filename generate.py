@@ -5,16 +5,19 @@ from tree import *
 nouns: list[str] = []
 adjectives: list[str] = []
 verbs_dict: dict[str, dict[str, str]] = {}
+subordinating_conjunctions: list[str] = []
 
 with open('./nouns.json', 'r') as f:
     nouns = list(json.load(f).keys())
 
-# read the adjectives
 with open('./adjectives.json', 'r') as f:
     adjectives = json.load(f)
 
 with open('./verbs.json', 'r') as f:
     verbs_dict = json.load(f)
+
+with open('./subordinating_conjunctions.json', 'r') as f:
+    subordinating_conjunctions = json.load(f)
 
 
 def generate_noun() -> Noun:
@@ -46,6 +49,10 @@ def generate_verb() -> Verb:
                 return PresentParticipleVerbPresent(verb)
             else:
                 return PresentParticipleVerbPast(verb)
+            
+def generate_subordinating_conjunction() -> SubordinatingConjunction:
+    conjunction = random.choice(subordinating_conjunctions)
+    return SubordinatingConjunction(conjunction)
         
 
 def generate_noun_phrase() -> NounPhrase:
@@ -63,7 +70,28 @@ def generate_noun_phrase() -> NounPhrase:
         return NounPhraseWithoutArticle(generate_noun(), adjectives)
     
 
-def generate_sentence() -> Sentence:
+def generate_independent_clause() -> IndependentClause:
     noun_phrase: NounPhrase = generate_noun_phrase()
     verb: Verb = generate_verb()
-    return Sentence(noun_phrase, verb)
+    # generate a second noun_phrase with 50% change
+
+    noun_phrase_two = None
+
+    if random.choice([True, False]):
+        noun_phrase_two = generate_noun_phrase()
+    
+
+
+    return IndependentClause(noun_phrase, verb, noun_phrase_two)
+    
+def generate_dependent_clause() -> DependentClause:
+    subordinating_conjunction: SubordinatingConjunction = generate_subordinating_conjunction()
+    independent_clause: IndependentClause = generate_independent_clause()
+    return DependentClause(subordinating_conjunction, independent_clause)
+
+
+def generate_sentence() -> Sentence:
+    if random.choice([True, False]):
+        return SentenceOne(generate_independent_clause())
+    else:
+        return SentenceTwo(generate_independent_clause(), generate_dependent_clause())
