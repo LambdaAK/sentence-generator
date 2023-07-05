@@ -14,7 +14,6 @@ with open('./adjectives.json', 'r') as f:
     adjectives = json.load(f)
 
 
-
 class Plurality(Enum):
     SINGULAR = 1
     PLURAL = 2
