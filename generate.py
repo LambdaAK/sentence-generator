@@ -31,10 +31,8 @@ def generate_noun_phrase() -> NounPhrase:
 
     [adjectives.append(a) for a in _adjectives if a not in adjectives]
 
-    adjective_level = NounPhraseAdjectiveLevel(generate_noun(), adjectives)
-
     # decide whether to make it a noun phrase with an article or not
     if random.choice([True, False]):
-        return NounPhraseWithArticle(random.choice([Article.DEFINITE, Article.INDEFINITE]), adjective_level)
+        return NounPhraseWithArticle(random.choice([Article.DEFINITE, Article.INDEFINITE]), generate_noun(), adjectives)
     else:
-        return NounPhraseWithoutArticle(adjective_level)
+        return NounPhraseWithoutArticle(generate_noun(), adjectives)

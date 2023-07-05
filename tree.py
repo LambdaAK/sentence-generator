@@ -27,23 +27,23 @@ class Article(Enum):
 @dataclass
 class Noun:
     plurality: Plurality
-    noun: str
+    word: str
 
     def __repr__(self):
         # if it's plural, add as 's' or 'es'
         match self.plurality:
             case Plurality.SINGULAR:
-                return self.noun
+                return self.word
             case Plurality.PLURAL:
-                return nouns_dict[self.noun]["plural"]
+                return nouns_dict[self.word]["plural"]
         
 
 @dataclass
 class Adjective:
-    adjective: str
+    word: str
 
     def __repr__(self) -> str:
-        return self.adjective
+        return self.word
 
 
 '''
@@ -54,7 +54,7 @@ class NounPhrase:
 
 
 @dataclass
-class NounPhraseAdjectiveLevel:
+class NounPhraseWithoutArticle(NounPhrase):
     noun: Noun
     adjectives: list[Adjective]
 
@@ -62,29 +62,22 @@ class NounPhraseAdjectiveLevel:
         adjectives_string: str = ', '.join(
             list(
                 map(
-                    lambda x: x.adjective,
+                    lambda x: x.word,
                     self.adjectives
                 )
             )
         )
         return f'{adjectives_string} {self.noun}'
-
-
-@dataclass
-class NounPhraseWithoutArticle(NounPhrase):
-    noun: NounPhraseAdjectiveLevel
-
-    def __repr__(self) -> str:
-        return self.noun.__repr__()
     
 @dataclass
 class NounPhraseWithArticle(NounPhrase):
     article: Article
-    noun_phrase_adjective_level: NounPhraseAdjectiveLevel
+    noun: Noun
+    adjectives: list[Adjective]
 
     def __repr__(self) -> str:
         article_string = ""
-        match self.article, self.noun_phrase_adjective_level.noun.plurality:
+        match self.article, self.noun.plurality:
             case Article.DEFINITE, _:
                 article_string = "the"
             case Article.INDEFINITE, Plurality.SINGULAR:
@@ -92,10 +85,10 @@ class NounPhraseWithArticle(NounPhrase):
                 first_word = None
 
                 # get the first adjective if possible, or the noun
-                if len(self.noun_phrase_adjective_level.adjectives) > 0:
-                    first_word = self.noun_phrase_adjective_level.adjectives[0].adjective
+                if len(self.adjectives) > 0:
+                    first_word = self.adjectives[0].word
                 else:
-                    first_word = self.noun_phrase_adjective_level.noun.noun
+                    first_word = self.noun.word
 
                 # if the first word starts with a vowel, use 'an'
                 if first_word[0] in ['a', 'e', 'i', 'o', 'u']:
@@ -103,11 +96,16 @@ class NounPhraseWithArticle(NounPhrase):
                 else:
                     article_string = "a"
                 
-
-
             case Article.INDEFINITE, Plurality.PLURAL:
                 article_string = "some"
 
-        return f'{article_string} {self.noun_phrase_adjective_level}'
+        adjectives_string: str = ', '.join(
+            list(
+                map(
+                    lambda x: x.word,
+                    self.adjectives
+                )
+            )
+        )            
 
-
+        return f'{article_string} {adjectives_string} {self.noun}'
