@@ -11,6 +11,6 @@ for i in l:
     print(i)
 '''
 
-for i in range(100):
-    s = generate_sentence()
-    print(s)
+while True:
+    print(generate_sentence())
+    input()

@@ -64,10 +64,23 @@ def generate_noun_phrase() -> NounPhrase:
     [adjectives.append(a) for a in _adjectives if a not in adjectives]
 
     # decide whether to make it a noun phrase with an article or not
-    if random.choice([True, False]):
-        return NounPhraseWithArticle(random.choice([Article.DEFINITE, Article.INDEFINITE]), generate_noun(), adjectives)
-    else:
-        return NounPhraseWithoutArticle(generate_noun(), adjectives)
+    # if the noun is singular, there must be an article
+    # if the noun is plural, there may be an article
+    
+    noun = generate_noun()
+
+    match noun.plurality:
+        case Plurality.SINGULAR:
+            article = random.choice([Article.DEFINITE, Article.INDEFINITE])
+            return NounPhraseWithArticle(article, noun, adjectives)
+        case Plurality.PLURAL:
+            if random.choice([True, False]):
+                article = random.choice([Article.DEFINITE, Article.INDEFINITE])
+                return NounPhraseWithArticle(article, noun, adjectives)
+            else:
+                return NounPhraseWithoutArticle(noun, adjectives)
+        
+
     
 
 def generate_independent_clause() -> IndependentClause:
