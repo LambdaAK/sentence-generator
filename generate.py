@@ -26,12 +26,12 @@ def generate_adjective() -> Adjective:
 def generate_noun_phrase() -> NounPhrase:
     # decide whether to make it a noun phrase with an adjective or not
 
-    adjective_level = None
+    _adjectives: list[Adjective] = (generate_adjective() for _ in range(random.randint(0, 3)))
+    adjectives: list[Adjective] = []
 
-    if random.choice([True, False]):
-        adjective_level = NounPhraseWithAdjective(generate_adjective(), generate_noun())
-    else:
-        adjective_level = NounPhraseWithoutAdjective(generate_noun())
+    [adjectives.append(a) for a in _adjectives if a not in adjectives]
+
+    adjective_level = NounPhraseAdjectiveLevel(generate_noun(), adjectives)
 
     # decide whether to make it a noun phrase with an article or not
     if random.choice([True, False]):

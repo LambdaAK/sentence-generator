@@ -53,8 +53,21 @@ class NounPhrase:
     pass
 
 
+@dataclass
 class NounPhraseAdjectiveLevel:
-    pass
+    noun: Noun
+    adjectives: list[Adjective]
+
+    def __repr__(self) -> str:
+        adjectives_string: str = ', '.join(
+            list(
+                map(
+                    lambda x: x.adjective,
+                    self.adjectives
+                )
+            )
+        )
+        return f'{adjectives_string} {self.noun}'
 
 
 @dataclass
@@ -75,11 +88,22 @@ class NounPhraseWithArticle(NounPhrase):
             case Article.DEFINITE, _:
                 article_string = "the"
             case Article.INDEFINITE, Plurality.SINGULAR:
-                # if the noun starts with a vowel, use 'an' instead of 'a'
-                if self.noun_phrase_adjective_level.noun.noun[0] in ['a', 'e', 'i', 'o', 'u']:
+                
+                first_word = None
+
+                # get the first adjective if possible, or the noun
+                if len(self.noun_phrase_adjective_level.adjectives) > 0:
+                    first_word = self.noun_phrase_adjective_level.adjectives[0].adjective
+                else:
+                    first_word = self.noun_phrase_adjective_level.noun.noun
+
+                # if the first word starts with a vowel, use 'an'
+                if first_word[0] in ['a', 'e', 'i', 'o', 'u']:
                     article_string = "an"
                 else:
                     article_string = "a"
+                
+
 
             case Article.INDEFINITE, Plurality.PLURAL:
                 article_string = "some"
@@ -87,17 +111,3 @@ class NounPhraseWithArticle(NounPhrase):
         return f'{article_string} {self.noun_phrase_adjective_level}'
 
 
-@dataclass
-class NounPhraseWithAdjective(NounPhraseAdjectiveLevel):
-    adjective: Adjective
-    noun: Noun
-
-    def __repr__(self) -> str:
-        return f'{self.adjective} {self.noun}'
-
-@dataclass
-class NounPhraseWithoutAdjective(NounPhraseAdjectiveLevel):
-    noun: Noun
-
-    def __repr__(self) -> str:
-        return self.noun.__repr__()
