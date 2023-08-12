@@ -2,9 +2,6 @@ from dataclasses import dataclass
 from enum import Enum
 import json
 
-
-
-
 class Base:
     nouns_dict: dict[str, dict[str, str]] = {}
     adjectives: list[str] = []
@@ -25,7 +22,6 @@ class Base:
             self.subordinating_conjunctions = json.load(f)
 
 
-
 class Plurality(Enum):
     SINGULAR = 1
     PLURAL = 2
@@ -33,7 +29,6 @@ class Plurality(Enum):
 class Article(Enum):
     DEFINITE = 1
     INDEFINITE = 2
-
 
 class Tense(Enum):
     INFINITIVE = 1

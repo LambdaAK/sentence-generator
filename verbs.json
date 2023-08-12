@@ -96,6 +96,55 @@
         "past participle": "worked",
         "present participle": "working",
         "third person singular": "works"
+    },
+    "ruin": {
+        "infinitive": "ruin",
+        "past": "ruined",
+        "past participle": "ruined",
+        "present participle": "ruining",
+        "third person singular": "ruins"
+    },
+    "clean": {
+        "infinitive": "clean",
+        "past": "cleaned",
+        "past participle": "cleaned",
+        "present participle": "cleaning",
+        "third person singular": "cleans"
+    },
+    "cook": {
+        "infinitive": "cook",
+        "past": "cooked",
+        "past participle": "cooked",
+        "present participle": "cooking",
+        "third person singular": "cooks"
+    },
+    "wash": {
+        "infinitive": "wash",
+        "past": "washed",
+        "past participle": "washed",
+        "present participle": "washing",
+        "third person singular": "washes"
+    },
+    "listen": {
+        "infinitive": "listen",
+        "past": "listened",
+        "past participle": "listened",
+        "present participle": "listening",
+        "third person singular": "listens"
+    },
+    "watch": {
+        "infinitive": "watch",
+        "past": "watched",
+        "past participle": "watched",
+        "present participle": "watching",
+        "third person singular": "watches"
+    },
+    "read": {
+        "infinitive": "read",
+        "past": "read",
+        "past participle": "read",
+        "present participle": "reading",
+        "third person singular": "reads"
     }
 }
        
